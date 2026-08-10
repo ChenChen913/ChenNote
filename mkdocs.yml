@@ -1,0 +1,94 @@
+site_name: 我的文档中心
+site_description: 个人文档管理中心 - 基于 MkDocs Material
+repo_url: https://github.com/YOUR_USERNAME/YOUR_REPO
+repo_name: 我的文档中心
+
+# ===== 主题配置 =====
+theme:
+  name: material
+  custom_dir: theme/
+  language: zh
+  
+  palette:
+    - scheme: default
+      primary: white
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  features:
+    - navigation.top            # 回到顶部
+    - navigation.tabs           # 顶部标签导航
+    - navigation.indexes        # 章节索引页
+    - content.code.annotate     # 代码注释
+
+# ===== 插件 =====
+plugins:
+  - search
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+      locale: zh
+  - git-authors:
+      show_contribution: true
+      show_line_count: true
+
+# ===== 自定义 CSS/JS =====
+extra_css:
+  - stylesheets/extra.css
+
+# ===== Markdown 扩展 =====
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: true
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.keys
+  - pymdownx.superfences
+  - meta
+  - attr_list
+
+# ===== 导航结构 =====
+nav:
+  - 首页:
+    - index.md
+    - 资源链接: links.md
+  
+  - 工具:
+    - tools/index.md
+    - Git 指南:
+      - 基础操作: tools/git/basics.md
+      - 分支管理: tools/git/branch.md
+    - Docker 指南:
+      - 入门: tools/docker/start.md
+      - 部署: tools/docker/deploy.md
+  
+  - 项目:
+    - projects/index.md
+    - AI 项目:
+      - 概述: projects/ai/overview.md
+      - 部署文档: projects/ai/deploy.md
+    - Web 开发:
+      - 概述: projects/web/overview.md
+  
+  - 关于:
+    - 关于本站: about.md
+    - 更新日志: changelog.md

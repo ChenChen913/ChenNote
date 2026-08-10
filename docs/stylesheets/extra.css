@@ -1,0 +1,55 @@
+/* 
+ * 自定义样式 - 参考 summer26.net9.org 风格
+ * 白底简洁风
+ */
+
+/* 导航标签 - 和 summer26 一样，标签下划线 */
+.md-tabs {
+  background-color: var(--md-primary-fg-color);
+}
+
+/* 文章内容 */
+.md-typeset {
+  font-size: .75rem;   /* 和 summer26 一致的字号 */
+}
+
+/* 代码块 */
+.md-typeset pre > code {
+  border-radius: 4px;
+}
+
+/* 表格 */
+.md-typeset table:not([class]) {
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: #f5f5f5;
+  color: #333;
+  font-weight: 600;
+}
+
+/* 链接 */
+.md-typeset a {
+  color: var(--md-typeset-a-color);
+}
+
+/* 提示框 */
+.md-typeset .admonition {
+  border-radius: 4px;
+  font-size: .7rem;
+}
+
+/* 修复双滚动条 */
+.md-main__inner {
+  margin-top: 0;
+}
+
+/* 页脚评论区样式 */
+.md-content__inner .md-source-date {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+}

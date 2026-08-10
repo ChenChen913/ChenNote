@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+  {{ super() }}
+  {# 外部链接在新标签页打开 #}
+  <script type="text/javascript">
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+      link.setAttribute('referrerpolicy', 'no-referrer');
+      link.setAttribute('target', '_blank');
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+
+  {# 显示页面作者信息 #}
+  {% if git_page_authors %}
+    <div class="md-source-date">
+      <small>
+        作者: {{ git_page_authors | default('enable mkdocs-git-authors-plugin') }}
+      </small>
+    </div>
+  {% endif %}
+
+  {# 评论区 #}
+  {% include "partials/comments.html" %}
+{% endblock %}
