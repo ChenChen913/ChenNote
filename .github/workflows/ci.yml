@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 permissions:
   contents: read
 concurrency:
@@ -24,10 +27,13 @@ jobs:
         with:
           python-version: '3.12'   # pin 具体版本，保证构建可复现
           cache: pip       # 缓存 pip 依赖，加速构建
-      - run: pip install -r requirements.txt
+      - run: pip install --no-cache-dir -r requirements.txt
       - run: mkdocs build --strict
       - uses: actions/configure-pages@v5
+        if: github.event_name == 'push'   # PR 仅做构建校验，不部署
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'push'
         with:
           path: site
       - uses: actions/deploy-pages@v4
+        if: github.event_name == 'push'

@@ -10,7 +10,7 @@
 
 /* 文章内容 */
 .md-typeset {
-  font-size: .75rem;   /* 有意为之的紧凑字号 */
+  font-size: .8rem;   /* 紧凑字号，兼顾可访问性 */
 }
 
 /* 代码块（圆角在 pre 上，Material 背景画在 pre） */
@@ -48,7 +48,7 @@
 /* 提示框 */
 .md-typeset .admonition {
   border-radius: 4px;
-  font-size: .7rem;
+  font-size: .75rem;
 }
 
 /* 修复双滚动条（保留顶部留白，避免内容贴住导航） */
