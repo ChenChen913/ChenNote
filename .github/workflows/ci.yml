@@ -25,7 +25,7 @@ jobs:
           python-version: '3.12'   # pin 具体版本，保证构建可复现
           cache: pip       # 缓存 pip 依赖，加速构建
       - run: pip install -r requirements.txt
-      - run: mkdocs build
+      - run: mkdocs build --strict
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

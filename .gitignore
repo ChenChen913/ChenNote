@@ -11,6 +11,7 @@ venv/
 .ruff_cache/
 .tox/
 .coverage
+.coverage.*
 htmlcov/
 *.egg-info/
 # 锚定根目录，避免误忽略源码目录

@@ -11,19 +11,21 @@
       if (event.button !== 0) return;
       const link = event.target.closest('a[href]');
       if (!link) return;
-      const href = link.getAttribute('href') || '';
-      // mailto:/tel:/javascript:/data:/ftp: 等特殊 scheme 交还浏览器原生处理
-      if (/^(mailto|tel|javascript|data|ftp):/i.test(href)) return;
+      const href = (link.getAttribute('href') || '').trim();
+      // 下载链接与特殊 scheme（mailto/tel/javascript/data/ftp/file 等）交还浏览器原生处理
+      if (link.download) return;
+      if (!/^https?:/i.test(href)) return;
       try {
         // 只处理真正的站外链接（含协议相对链接 //xxx）
-        if (new URL(href, location.origin).origin === location.origin) return;
+        if (new URL(href, document.baseURI).origin === location.origin) return;
       } catch (e) {
         return; // 畸形 URL 走浏览器默认行为
       }
       if (link.target === '_blank') return; // 已显式新标签打开的链接不重复处理
       event.preventDefault();
       const win = window.open(href, '_blank', 'noopener,noreferrer');
-      if (!win) location.assign(href); // 弹窗被拦时回退到当前页导航
+      // 弹窗被浏览器拦截时不做任何事，避免把当前阅读页面导航去站外
+      if (!win) return;
     });
   </script>
 {% endblock %}

@@ -13,9 +13,9 @@
   font-size: .75rem;   /* 有意为之的紧凑字号 */
 }
 
-/* 代码块 */
-.md-typeset pre > code {
-  border-radius: 4px;
+/* 代码块（圆角在 pre 上，Material 背景画在 pre） */
+.md-typeset pre {
+  border-radius: 6px;
 }
 
 /* 表格 */
@@ -28,6 +28,11 @@
   background-color: var(--md-default-bg-color--light);  /* 跟随亮/暗模式 */
   color: var(--md-default-fg-color);
   font-weight: 600;
+}
+
+/* 暗色模式下表格头用更深的底色，避免发白发灰 */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: var(--md-default-bg-color--lighter);
 }
 
 /* 链接 */
