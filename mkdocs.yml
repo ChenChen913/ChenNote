@@ -1,7 +1,8 @@
 site_name: 我的文档中心
 site_description: 个人文档管理中心 - 基于 MkDocs Material
-repo_url: https://github.com/YOUR_USERNAME/YOUR_REPO
-repo_name: 我的文档中心
+# ===== 顶部 GitHub 入口 =====
+repo_url: https://github.com/ChenChen913/ChenNote
+repo_name: ChenNote
 
 # ===== 主题配置 =====
 theme:
@@ -11,11 +12,12 @@ theme:
   
   palette:
     - scheme: default
-      primary: white
+      primary: light blue
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
+      primary: light blue
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
