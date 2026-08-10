@@ -109,8 +109,11 @@ nav:
   - 生活:
     - life/index.md
     - 健身: life/fitness/index.md
+    - 减肥: life/weight-loss/index.md
     - 养生: life/health/index.md
     - 做饭: life/cooking/index.md
+    - 旅游: life/travel/index.md
+    - 看电影: life/movies/index.md
 
   - 关于:
     - 关于本站: about.md
