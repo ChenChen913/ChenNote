@@ -1,5 +1,5 @@
-site_name: 我的文档中心
-site_description: 个人文档管理中心 - 基于 MkDocs Material
+site_name: 王晨的学习中心
+site_description: 王晨的个人学习笔记 - 基于 MkDocs Material
 # ===== 顶部 GitHub 入口 =====
 repo_url: https://github.com/ChenChen913/ChenNote
 repo_name: ChenNote
@@ -70,8 +70,29 @@ nav:
   - 首页:
     - index.md
     - 资源链接: links.md
-  
-  - 工具:
+
+  - 计算机基础:
+    - cs/index.md
+    - 数据结构: cs/dsa/index.md
+    - 计算机组成原理: cs/architecture/index.md
+    - 操作系统: cs/os/index.md
+    - 计算机网络: cs/network/index.md
+
+  - 人工智能:
+    - ai/index.md
+    - 机器学习: ai/ml/index.md
+    - 深度学习: ai/dl/index.md
+
+  - 项目实战:
+    - projects/index.md
+    - Java 项目: projects/java/index.md
+    - AI 项目:
+      - 概述: projects/ai/overview.md
+      - 部署文档: projects/ai/deploy.md
+    - Web 开发:
+      - 概述: projects/web/overview.md
+
+  - 开发工具:
     - tools/index.md
     - Git 指南:
       - 基础操作: tools/git/basics.md
@@ -79,15 +100,18 @@ nav:
     - Docker 指南:
       - 入门: tools/docker/start.md
       - 部署: tools/docker/deploy.md
-  
-  - 项目:
-    - projects/index.md
-    - AI 项目:
-      - 概述: projects/ai/overview.md
-      - 部署文档: projects/ai/deploy.md
-    - Web 开发:
-      - 概述: projects/web/overview.md
-  
+
+  - 语言与表达:
+    - language/index.md
+    - 英语: language/english/index.md
+    - 口才训练: language/speech/index.md
+
+  - 生活:
+    - life/index.md
+    - 健身: life/fitness/index.md
+    - 养生: life/health/index.md
+    - 做饭: life/cooking/index.md
+
   - 关于:
     - 关于本站: about.md
     - 更新日志: changelog.md
