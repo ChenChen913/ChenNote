@@ -35,6 +35,11 @@
   background-color: rgba(0, 0, 0, .2);
 }
 
+/* 暗色模式下表格阴影用真正投影而非前景色光晕 */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+
 /* 链接 */
 .md-typeset a {
   color: var(--md-typeset-a-color);

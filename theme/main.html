@@ -9,23 +9,25 @@
       // 修饰键点击（Ctrl/Cmd/Shift/Alt）与非左键交还浏览器原生行为
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       if (event.button !== 0) return;
+      if (!(event.target instanceof Element)) return;
       const link = event.target.closest('a[href]');
       if (!link) return;
       const href = (link.getAttribute('href') || '').trim();
       // 下载链接与特殊 scheme（mailto/tel/javascript/data/ftp/file 等）交还浏览器原生处理
       if (link.download) return;
-      if (!/^https?:/i.test(href)) return;
+      if (!/^(?:https?:)?\/\//i.test(href)) return; // 仅 http(s) 与协议相对链接进入后续处理
+      let base;
       try {
+        base = new URL(document.baseURI);
         // 只处理真正的站外链接（含协议相对链接 //xxx）
-        if (new URL(href, document.baseURI).origin === location.origin) return;
+        if (new URL(href, base).origin === base.origin) return;
       } catch (e) {
         return; // 畸形 URL 走浏览器默认行为
       }
-      if (link.target) return; // 任何显式 target（_blank/_top/命名窗口等）都交还浏览器处理
+      if (link.target && link.target !== '_blank') return; // 命名窗口/框架目标交还浏览器
       event.preventDefault();
-      const win = window.open(href, '_blank', 'noopener,noreferrer');
-      // 弹窗被浏览器拦截时不做任何事，避免把当前阅读页面导航去站外
-      if (!win) return;
+      window.open(href, '_blank', 'noopener,noreferrer');
+      // 弹窗被浏览器拦截（含 noopener 返回 null）时不做任何事，避免导航走当前页
     });
   </script>
 {% endblock %}
