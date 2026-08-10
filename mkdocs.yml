@@ -78,15 +78,12 @@ nav:
     - 概率论与数理统计: math/probability/index.md
     - 离散数学: math/discrete/index.md
 
-  - 计算机基础:
+  - 计算机与AI:
     - cs/index.md
     - 数据结构: cs/dsa/index.md
     - 计算机组成原理: cs/architecture/index.md
     - 操作系统: cs/os/index.md
     - 计算机网络: cs/network/index.md
-
-  - 人工智能:
-    - ai/index.md
     - 机器学习: ai/ml/index.md
     - 深度学习: ai/dl/index.md
 
