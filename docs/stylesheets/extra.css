@@ -21,7 +21,7 @@
 /* 表格 */
 .md-typeset table:not([class]) {
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 4px var(--md-default-fg-color--lightest);  /* 跟随亮/暗模式 */
 }
 
 .md-typeset table:not([class]) th {
@@ -41,9 +41,12 @@
   font-size: .7rem;
 }
 
-/* 修复双滚动条 */
+/* 修复双滚动条（保留顶部留白，避免内容贴住导航） */
 .md-main__inner {
   margin-top: 0;
+}
+.md-content {
+  padding-top: .5rem;
 }
 
 /* 页脚评论区样式 */

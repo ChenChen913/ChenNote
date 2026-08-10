@@ -2,12 +2,17 @@
 
 {% block scripts %}
   {{ super() }}
-  {# 外部链接在新标签页打开（DOM 就绪后执行，带 null 守卫） #}
+  {# 外部链接在新标签页打开（DOM 就绪后执行；站内链接保持原页；rel 防 tabnabbing） #}
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('a[href^="http"]').forEach(link => {
+        const href = link.getAttribute('href') || '';
+        if (new URL(href, location.origin).origin === location.origin) {
+          return; // 站内绝对链接保持当前页打开
+        }
         link.setAttribute('referrerpolicy', 'no-referrer');
         link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
       });
     });
   </script>
