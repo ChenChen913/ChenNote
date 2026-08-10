@@ -30,9 +30,9 @@
   font-weight: 600;
 }
 
-/* 暗色模式下表格头用更深的底色，避免发白发灰 */
+/* 暗色模式下表格头叠加黑色压暗，避免发白发灰（--lighter 方向反了，弃用） */
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
-  background-color: var(--md-default-bg-color--lighter);
+  background-color: rgba(0, 0, 0, .2);
 }
 
 /* 链接 */

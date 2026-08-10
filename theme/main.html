@@ -21,7 +21,7 @@
       } catch (e) {
         return; // 畸形 URL 走浏览器默认行为
       }
-      if (link.target === '_blank') return; // 已显式新标签打开的链接不重复处理
+      if (link.target) return; // 任何显式 target（_blank/_top/命名窗口等）都交还浏览器处理
       event.preventDefault();
       const win = window.open(href, '_blank', 'noopener,noreferrer');
       // 弹窗被浏览器拦截时不做任何事，避免把当前阅读页面导航去站外
