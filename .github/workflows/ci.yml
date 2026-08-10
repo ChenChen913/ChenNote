@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0   # git 插件需要完整历史（git-revision-date / git-authors）
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: '3.12'   # pin 具体版本，保证构建可复现
           cache: pip       # 缓存 pip 依赖，加速构建
       - run: pip install -r requirements.txt
       - run: mkdocs build

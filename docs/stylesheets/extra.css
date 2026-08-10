@@ -3,14 +3,14 @@
  * 主色 light blue（天蓝），导航标签跟随主色
  */
 
-/* 导航标签 - 和 summer26 一样，标签下划线 */
+/* 导航标签 - 跟随主色 */
 .md-tabs {
   background-color: var(--md-primary-fg-color);
 }
 
 /* 文章内容 */
 .md-typeset {
-  font-size: .75rem;   /* 和 summer26 一致的字号 */
+  font-size: .75rem;   /* 有意为之的紧凑字号 */
 }
 
 /* 代码块 */

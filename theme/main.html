@@ -6,6 +6,9 @@
      origin 过滤站内链接；特殊 scheme 交还浏览器原生处理；window.open 带 noopener/noreferrer 防 tabnabbing #}
   <script type="text/javascript">
     document.addEventListener('click', (event) => {
+      // 修饰键点击（Ctrl/Cmd/Shift/Alt）与非左键交还浏览器原生行为
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (event.button !== 0) return;
       const link = event.target.closest('a[href]');
       if (!link) return;
       const href = link.getAttribute('href') || '';
@@ -19,7 +22,8 @@
       }
       if (link.target === '_blank') return; // 已显式新标签打开的链接不重复处理
       event.preventDefault();
-      window.open(href, '_blank', 'noopener,noreferrer');
+      const win = window.open(href, '_blank', 'noopener,noreferrer');
+      if (!win) location.assign(href); // 弹窗被拦时回退到当前页导航
     });
   </script>
 {% endblock %}
