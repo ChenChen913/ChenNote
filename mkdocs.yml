@@ -71,6 +71,13 @@ nav:
     - index.md
     - 资源链接: links.md
 
+  - 数学:
+    - math/index.md
+    - 高等数学: math/calculus/index.md
+    - 线性代数: math/linear-algebra/index.md
+    - 概率论与数理统计: math/probability/index.md
+    - 离散数学: math/discrete/index.md
+
   - 计算机基础:
     - cs/index.md
     - 数据结构: cs/dsa/index.md
