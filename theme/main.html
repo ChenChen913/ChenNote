@@ -2,18 +2,21 @@
 
 {% block scripts %}
   {{ super() }}
-  {# 外部链接在新标签页打开（DOM 就绪后执行；站内链接保持原页；rel 防 tabnabbing） #}
+  {# 外部链接在新标签页打开：click 事件委托，天然覆盖动态内容与 instant-loading 页面；
+     origin 过滤站内链接；window.open 带 noopener/noreferrer 防 tabnabbing #}
   <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href^="http"]').forEach(link => {
-        const href = link.getAttribute('href') || '';
-        if (new URL(href, location.origin).origin === location.origin) {
-          return; // 站内绝对链接保持当前页打开
-        }
-        link.setAttribute('referrerpolicy', 'no-referrer');
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
-      });
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href') || '';
+      try {
+        // 只处理真正的站外链接（含协议相对链接 //xxx）
+        if (new URL(href, location.origin).origin === location.origin) return;
+      } catch (e) {
+        return; // 畸形 URL 走浏览器默认行为
+      }
+      event.preventDefault();
+      window.open(href, '_blank', 'noopener,noreferrer');
     });
   </script>
 {% endblock %}
