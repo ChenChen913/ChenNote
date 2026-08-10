@@ -6,6 +6,20 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# 环境变量（防泄密，保留 .env.example 模板）
+.env
+.env.*
+!.env.example
 
 # IDE
 .vscode/

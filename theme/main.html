@@ -14,11 +14,11 @@
 {% block content %}
   {{ super() }}
 
-  {# 显示页面作者信息 #}
+  {# 显示页面作者信息（git-authors 插件提供） #}
   {% if git_page_authors %}
     <div class="md-source-date">
       <small>
-        作者: {{ git_page_authors | default('enable mkdocs-git-authors-plugin') }}
+        作者: {{ git_page_authors }}
       </small>
     </div>
   {% endif %}

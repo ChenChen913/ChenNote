@@ -13,12 +13,15 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10   # 防止 pip/构建/部署挂起耗尽运行时长
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # git 插件需要完整历史（git-revision-date / git-authors）
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-git-authors-plugin
+      - run: pip install mkdocs-material==9.7.7 mkdocs-git-revision-date-localized-plugin==1.5.3 mkdocs-git-authors-plugin==0.10.0
       - run: mkdocs build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

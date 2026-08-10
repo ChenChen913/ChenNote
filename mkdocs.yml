@@ -45,9 +45,6 @@ extra_css:
 # ===== Markdown 扩展 =====
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
-      linenums: true
   - footnotes
   - toc:
       permalink: true
