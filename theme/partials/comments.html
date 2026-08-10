@@ -1,18 +1,23 @@
+<!--
+  评论区（Giscus）已禁用，保留配置供后续启用。
+
+  启用步骤：
+  1. 仓库 Settings > General > 勾选 Discussions
+  2. 访问 https://github.com/apps/giscus 安装 Giscus App（选 ChenNote 仓库）
+  3. 访问 https://giscus.app/zh-CN 按提示生成配置
+  4. 取消下方 HTML 注释，并替换 data-repo / data-repo-id /
+     data-category / data-category-id 为真实值
+  5. 推送后评论区即可用 GitHub 账号登录发言
+-->
+
+<!--
 <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
 
-<!-- Giscus 评论区 - 需要替换为你自己的 GitHub 仓库信息 -->
-<!-- 
-  使用步骤:
-  1. 在你的 GitHub 仓库 Settings > Features 中启用 Discussions
-  2. 访问 https://github.com/apps/giscus 安装 Giscus App
-  3. 访问 https://giscus.app/zh-CN 生成配置
-  4. 替换下面的 data-repo, data-repo-id, data-category, data-category-id
--->
 <script src="https://giscus.app/client.js"
-        data-repo="YOUR_USERNAME/YOUR_REPO"
-        data-repo-id="YOUR_REPO_ID"
+        data-repo="ChenChen913/ChenNote"
+        data-repo-id="REPLACE_ME"
         data-category="Announcements"
-        data-category-id="YOUR_CATEGORY_ID"
+        data-category-id="REPLACE_ME"
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="1"
@@ -24,7 +29,6 @@
         async>
 </script>
 
-<!-- 同步 Giscus 主题与 Material 的亮色/暗色切换 -->
 <script>
   var giscus = document.querySelector("script[src*=giscus]")
 
@@ -53,3 +57,4 @@
     })
   })
 </script>
+-->
