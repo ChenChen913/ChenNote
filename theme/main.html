@@ -2,11 +2,13 @@
 
 {% block scripts %}
   {{ super() }}
-  {# 外部链接在新标签页打开 #}
+  {# 外部链接在新标签页打开（DOM 就绪后执行，带 null 守卫） #}
   <script type="text/javascript">
-    document.querySelectorAll('a[href^="http"]').forEach(link => {
-      link.setAttribute('referrerpolicy', 'no-referrer');
-      link.setAttribute('target', '_blank');
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.setAttribute('referrerpolicy', 'no-referrer');
+        link.setAttribute('target', '_blank');
+      });
     });
   </script>
 {% endblock %}

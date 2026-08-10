@@ -5,8 +5,6 @@ on:
       - main
 permissions:
   contents: read
-  pages: write
-  id-token: write
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -14,6 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10   # 防止 pip/构建/部署挂起耗尽运行时长
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,6 +23,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+          cache: pip       # 缓存 pip 依赖，加速构建
       - run: pip install mkdocs-material==9.7.7 mkdocs-git-revision-date-localized-plugin==1.5.3 mkdocs-git-authors-plugin==0.10.0
       - run: mkdocs build
       - uses: actions/configure-pages@v5
