@@ -3,18 +3,21 @@
 {% block scripts %}
   {{ super() }}
   {# 外部链接在新标签页打开：click 事件委托，天然覆盖动态内容与 instant-loading 页面；
-     origin 过滤站内链接；window.open 带 noopener/noreferrer 防 tabnabbing #}
+     origin 过滤站内链接；特殊 scheme 交还浏览器原生处理；window.open 带 noopener/noreferrer 防 tabnabbing #}
   <script type="text/javascript">
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a[href]');
       if (!link) return;
       const href = link.getAttribute('href') || '';
+      // mailto:/tel:/javascript:/data:/ftp: 等特殊 scheme 交还浏览器原生处理
+      if (/^(mailto|tel|javascript|data|ftp):/i.test(href)) return;
       try {
         // 只处理真正的站外链接（含协议相对链接 //xxx）
         if (new URL(href, location.origin).origin === location.origin) return;
       } catch (e) {
         return; // 畸形 URL 走浏览器默认行为
       }
+      if (link.target === '_blank') return; // 已显式新标签打开的链接不重复处理
       event.preventDefault();
       window.open(href, '_blank', 'noopener,noreferrer');
     });
